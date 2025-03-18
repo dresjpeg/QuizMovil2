@@ -26,32 +26,29 @@ export default function App() {
       <FlatList
         data={data}
         renderItem={({item}) => <Item title={item.title} />}
-        keyExtractor={item => item.id}
-      />
-    </View>
+        keyExtractor={item => item.id}/>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection:  'row'
+    flexWrap: 'wrap',
+    flexDirection: 'colomn',
+    padding: 5,
+    justifyContent: 'space-around',
   },
 
   item:{
     borderColor: 'black',
     borderRadius: '2px',
-    borderWidth: '2px'
+    borderWidth: '0.5px',
   },
-  title:{
+  
+  title: {
     fontFamily: '',
     fontSize: 16,
-    
-
-  }
-});
+  },
+})
