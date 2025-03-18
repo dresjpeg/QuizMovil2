@@ -7,17 +7,15 @@ export default function App() {
     fetch('https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=M1uwZmRTQ9jgKY6Qq3yqQweXVvgshix6lvT5DiZR')
     .then((response) => response.json())
     .then((json) => setData(json.near_earth_objects))
-    // .them(console.log(json.near_earth_objects))
+    // .them(console.log(json))
     .catch((error) => console.error(error));
   }, [])
 
   const Item = ({ name, id }) => (
-    <View style={styles.item}>
-      <View key={id}>
+      <View style={styles.item}>
         <Text style={styles.title}>ID: {id}</Text>
         <Text style={styles.title}>Nombre: {name}</Text>
       </View>
-    </View>
   );
 
   return (
@@ -25,8 +23,8 @@ export default function App() {
       <View>
       <FlatList
         data={data}
-        renderItem={({item}) => <Item title={item.title} />}
-        keyExtractor={item => item.id}/>
+        renderItem={({ item }) => <Item name={item.name} id={item.id} />}
+        keyExtractor={item => item.id.toString()}/>
       </View>
     </View>
   );
@@ -36,7 +34,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexWrap: 'wrap',
-    flexDirection: 'colomn',
+    flexDirection: 'column',
     padding: 5,
     justifyContent: 'space-around',
   },
